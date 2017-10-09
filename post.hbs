@@ -1,0 +1,150 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+{{#post}}
+    {{#if image}}
+    <img src="{{image}}!wechatsmall" class="wechat-only">
+    <header id="header" class="home-header blog-background banner-mask lazy" data-url="{{image}}">
+    {{else}}
+    <img src="https://luoleiorg.b0.upaiyun.com/blog/yasuko/yasuko-wechat.jpg!" class="hide">
+    <header id="header" class="home-header blog-background banner-mask lazy" data-url="https://luoleiorg.b0.upaiyun.com/tmp/yasuko/yasuko.jpg" style="background-image:no-cover">
+    {{/if}}
+
+        <div class="nav-header">
+        <div class="nav-header-container">
+             <a href="{{@blog.url}}" class="back-home">Home</a>
+        </div>
+
+        </div>
+        <div class="header-wrap" >
+            <div class="post-info-container">
+                <h2 class="post-page-title ">
+                {{title}}
+            </h2>
+                <time class="post-page-time">{{date format="DD MMMM YYYY"}}</time>
+                <span class="post-page-author">{{#author}}{{name}}{{/author}}</span>
+                <span class="post-page-tags">
+                    {{tags prefix="" separator=" "}}
+               </span>
+            </div>
+
+        </div>
+        <div class="arrow_down">
+               <a href="javascript:;"></a>
+        </div>
+    </header>
+
+
+
+
+<main class="content" id="main" role="main">
+
+    <article class="{{post_class}}">
+
+     <section class="post-content">
+     <div class="single-post-inner">
+        {{content}}
+        <div class="tag-box">
+          {{tags prefix="" separator=" "}}
+        </div>
+        <div class="money-like" id="like-money">
+            <div class="reward-button">赏
+            <span class="money-code">
+            <span class="alipay-code">
+                <a href="javascript:;">
+                <img data-url="{{asset "images/qr-alipay-256.png"}}" class="alipay-img" src="data:image/gif;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=="><b>支付宝扫码打赏</b>
+                </a>
+            </span>
+            <span class="wechat-code">
+                <img data-url="{{asset "images/qr-wechat-256.png"}}" class="wechat-img" src="data:image/gif;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=="><b>微信打赏</b>
+            </span>
+            </span>
+
+            </div>
+            <p class="money-notice">若你觉得我的文章对你有帮助,欢迎点击上方按钮对我打赏</p>
+        </div>
+        <div class="qr-code">
+            <img src="https://encrypt.proxy.is26.com/qr?content={{url absolute="true"}}" alt="">
+            <p>扫描二维码,分享此文章</p>
+        </div>
+     </div>
+    </section>
+
+
+    {{#author}}
+                <section class="author">
+                 {{#if image}}
+            <figure class="author-image">
+                <a class="img" href="javascript:;" style="background-image: url('{{image}}')"><span class="hide">{{name}}'s Picture</span></a>
+            </figure>
+              {{/if}}
+
+            <section class="author-detail">
+                <a href="javascript:;">{{name}}</a>
+            {{#if bio}}
+                 <p>{{bio}}</p>
+            {{else}}
+                <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+            {{/if}}
+                <div class="author-meta">
+                     {{#if location}}
+                    <span class="author-location">{{location}}</span>
+                    {{/if}}
+                     {{#if website}}
+                    <span class="author-link"><a href="{{website}}">{{website}}</a></span>
+                    {{/if}}
+                </div>
+
+            </section>
+        </section>
+        {{/author}}
+
+    </article>
+          <section class="share">
+            <div class="share-icons" id="share-icons">
+               <a class="icon-share" href="http://weibo.com/foru17/">
+                    <span class=""><i class="iconfont iconfont-weibo">&#xe607;</i></span>
+                </a>
+
+                <a class="icon-share" href="https://twitter.com/foru17">
+                    <span class=""><i class="iconfont iconfont-twitter">&#xe604;</i></span>
+                </a>
+                <a class="icon-share" href="https://www.instagram.com/foru17/">
+                    <span class=""><i class="iconfont  iconfont-instagram">&#xe603;</i></span>
+                </a>
+                <a class="icon-share icon-github" href="https://github.com/foru17">
+                    <span class=""><i class="iconfont  iconfont-github">&#xe60d;</i></span>
+                </a>
+                <a class="icon-share icon-weibo" href="https://www.zhihu.com/people/luolei">
+                    <span class=""><i class="iconfont  iconfont-zhihu">&#xe609;</i></span>
+                </a>
+            </div>
+        </section>
+<aside class="read-next">
+    {{#next_post}}
+    <a class="read-next-story {{#if image}} lazy" data-url="{{image}}" style="background-image: url(){{else}}no-cover{{/if}}" href="{{url}}">
+        <section class="post">
+            <h2>{{title}}</h2>
+            <p>{{excerpt words="6"}}&hellip;</p>
+        </section>
+    </a>
+    {{/next_post}}
+    {{#prev_post}}
+    <a class="read-next-story prev {{#if image}} lazy" data-url="{{image}}" style="background-image: url(){{else}}no-cover{{/if}}" href="{{url}}">
+        <section class="post">
+            <h2>{{title}}</h2>
+            <p>{{excerpt words="6"}}&hellip;</p>
+        </section>
+    </a>
+    {{/prev_post}}
+</aside>
+<section class="comment-area yasuko-only" >
+<div id="disqus_thread"></div>
+</main>
+</section>
+
+<script type="text/javascript" src="{{asset "js/prism.js"}}"></script>
+{{/post}}
