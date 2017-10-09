@@ -5,15 +5,13 @@
 
 {{! Everything inside the #post tags pulls data from the post }}
 {{#post}}
-    {{!-- {{#if image}}
-    <img src="rayzhao98.top{{image}}!wechatsmall" class="wechat-only">
-    <header id="header" class="home-header blog-background banner-mask lazy" data-url="rayzhao98.top{{image}}">
-    {{else}}
-    <img src="https://luoleiorg.b0.upaiyun.com/blog/yasuko/yasuko-wechat.jpg!" class="hide">
-    <header id="header" class="home-header blog-background banner-mask lazy" data-url="https://luoleiorg.b0.upaiyun.com/tmp/yasuko/yasuko.jpg" style="background-image:no-cover">
-    {{/if}} --}}
-    <img src="{{image}}" class="wechat-only">
+    {{#if image}}
+    <img src="{{image}}!wechatsmall" class="wechat-only">
     <header id="header" class="home-header blog-background banner-mask lazy" data-url="{{image}}">
+    {{else}}
+    <img src="/assets/images/indexcover.jpg" class="hide">
+    <header id="header" class="home-header blog-background banner-mask lazy" data-url="/assets/images/indexcover.jpg" style="background-image:no-cover">
+    {{/if}}
         <div class="nav-header">
         <div class="nav-header-container">
              <a href="{{@blog.url}}" class="back-home">Home</a>
